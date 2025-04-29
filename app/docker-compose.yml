@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8888:8888"  # Пример порта, измените под ваш проект
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+    # Если нужно, добавьте другие переменные окружения
+    # command: python main.py  # Можно указать команду здесь вместо Dockerfile
+
+  db:
+    image: postgres:13  # Или другая версия
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123123123
+      POSTGRES_DB: test
+    volumes:
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+volumes:
+  postgres_data:
