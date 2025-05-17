@@ -2,6 +2,9 @@
 ## Требования
 Требования внутри requirements.me
 
+## БД
+инициализация в алмебик через alembic revision --autogenerate -m "initial migration" 
+
 ## env
 необходимо после скачивания репозитория создать файл .env куда надо добавить
 - BDUSER
